@@ -1,13 +1,20 @@
 # create weather class and require it 
-# Simple TDD with only Airport class. Plane class and plane spec not completed
+# we create a separate weather class because can an Airport control or show weather? 
+# Classes should reflect real life so a seprate class for weather is needed 
+# the Airport class needs to know about the weather class for it to use its methods so you use require to link the file 
+
 
 #I would like a default airport capacity that can be overridden as appropriate
+# Most cases you use a CONSTANT when you do not want the value to change 
+# in this case sometimes we may want to change the value so it it better to make capacity into an instance variable 
 #CAPACITY = 5 # Capacity for 5 planes can be changed instead of writing the number everywhere
 
 
 class Airport
-  #def intialize(weather = Weather.new)
- # @weather = weather 
+  def intialize(weather = Weather.new, capacity = 10 #adding 10 here sets a defualt value if equaled to itself then you must give it an argument later on
+  # when used)
+ # @weather = weather
+   @capacity = capacity #this now includes cthe capacity from above which contains a defualt value 
   #end 
   #I want to instruct a plane to land at an airport
   def land_plane
@@ -39,8 +46,10 @@ class Airport
   end
 
   #I want to prevent landing when weather is stormy # We want the airport object to ask the weather object what weather it is 
+  # weather parameter will prevent or let landing depending on the value sunny or stormy which is set by rand 
   def prevent_landing #(weather) 
-    # @weather.method_name 
+    # @weather is used to access the instance of the weather class and now in this file because weather is now a instance variable we can call it be @ 
+    # @weather.method_name selects weather at random 
     stormy = true 
     if stormy == true 
       return "Prevent landing"
